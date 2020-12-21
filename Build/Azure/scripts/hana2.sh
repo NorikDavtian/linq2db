@@ -1,18 +1,19 @@
 #!/bin/bash
 
-docker run -d --name hana2 -p 39013:39013 store/saplabs/hanaexpress:2.00.040.00.20190729.1 --agree-to-sap-license
-#--passwords-url file:///password.json
+docker run -d --name hana2 -p 39013:39013 store/saplabs/hanaexpress:2.00.045.00.20200121.1 --agree-to-sap-license --passwords-url file:///hana/password.json
 
 #echo Generate password file
 cat <<-EOJSON > hana_password.json
-{"master_password": "password"}
+{"master_password": "Passw0rd"}
 EOJSON
 
-#docker cp hana_password.json hana2:/password.json
-#docker exec hana2 sudo chmod 600 /password.json
-#docker exec hana2 sudo chown 12000:79 /password.json
+docker cp hana_password.json hana2:/hana/password.json
+docker exec hana2 sudo chmod 600 /hana/password.json
+docker exec hana2 sudo chown 12000:79 /hana/password.json
 
 docker ps -a
+
+git clone https://github.com/MaceWindu/linq2db.ci.git ~/linq2db_ci
 
 retries=0
 until docker logs hana2 | grep -q 'Startup finished'; do
@@ -26,3 +27,5 @@ until docker logs hana2 | grep -q 'Startup finished'; do
 done
 
 docker logs hana2
+
+~/linq2db_ci/linq2db.ci/providers/saphana/linux/HDBSQL/hdbsql -n localhost:39013 -u SYSTEM -p Passw0rd CREATE SCHEMA TESTDB

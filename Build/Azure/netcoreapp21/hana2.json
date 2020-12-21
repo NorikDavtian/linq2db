@@ -1,7 +1,7 @@
 ﻿{
 	"CORE21.Azure": {
 		"Providers": [
-			"SapHana"
+			"SapHana.Odbc"
 		]
 	}
 }
