@@ -1,6 +1,6 @@
 #!/bin/bash
 
-docker run -d --name hana2 -p 39015:39015 store/saplabs/hanaexpress:2.00.045.00.20200121.1 --agree-to-sap-license --passwords-url file:///hana/password.json
+docker run -d --name hana2 -p 39013:39013 store/saplabs/hanaexpress:2.00.045.00.20200121.1 --agree-to-sap-license --passwords-url file:///hana/password.json
 
 #echo Generate password file
 cat <<-EOJSON > hana_password.json
@@ -28,7 +28,7 @@ done
 
 docker logs hana2
 
-~/linq2db_ci/providers/saphana/linux/HDBSQL/hdbsql -n localhost:39015 -u SYSTEM -p Passw0rd CREATE SCHEMA TESTDB
+~/linq2db_ci/providers/saphana/linux/HDBSQL/hdbsql -d HXE -n localhost:39013 -u SYSTEM -p Passw0rd CREATE SCHEMA TESTDB
 
 cat <<-EOJSON > UserDataProviders.json
 {
@@ -38,7 +38,7 @@ cat <<-EOJSON > UserDataProviders.json
         "TraceLevel": "Info",
         "Connections": {
             "SapHana.Odbc": {
-                "ConnectionString": "Driver=$HOME/linq2db_ci/providers/saphana/linux/ODBC/libodbcHDB.so;SERVERNODE=localhost:39015;databaseName=HXE;CS=TESTDB;UID=SYSTEM;PWD=Passw0rd;"
+                "ConnectionString": "Driver=$HOME/linq2db_ci/providers/saphana/linux/ODBC/libodbcHDB.so;SERVERNODE=localhost:39013;databaseName=HXE;CS=TESTDB;UID=SYSTEM;PWD=Passw0rd;"
             }
         }
     },
