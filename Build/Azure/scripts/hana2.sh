@@ -29,6 +29,7 @@ done
 docker logs hana2
 
 ~/linq2db_ci/providers/saphana/linux/HDBSQL/hdbsql -d HXE -n localhost:39013 -u SYSTEM -p Passw0rd CREATE SCHEMA TESTDB
+~/linq2db_ci/providers/saphana/linux/HDBSQL/hdbsql -d HXE -n localhost:39013 -u SYSTEM -p Passw0rd ALTER USER SYSTEM SET PARAMETER STATEMENT MEMORY LIMIT = '10'
 
 cat <<-EOJSON > UserDataProviders.json
 {
