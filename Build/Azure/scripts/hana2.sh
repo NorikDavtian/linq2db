@@ -28,4 +28,4 @@ done
 
 docker logs hana2
 
-~/linq2db_ci/linq2db.ci/providers/saphana/linux/HDBSQL/hdbsql -n localhost:39013 -u SYSTEM -p Passw0rd CREATE SCHEMA TESTDB
+~/linq2db_ci/providers/saphana/linux/HDBSQL/hdbsql -n localhost:39013 -u SYSTEM -p Passw0rd CREATE SCHEMA TESTDB
