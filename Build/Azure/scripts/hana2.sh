@@ -13,7 +13,7 @@ docker exec hana2 sudo chown 12000:79 /hana/password.json
 
 docker ps -a
 
-git clone https://github.com/MaceWindu/linq2db.ci.git ~/linq2db_ci
+git clone https://github.com/linq2db/linq2db.ci.git ~/linq2db_ci
 
 retries=0
 until docker logs hana2 | grep -q 'Startup finished'; do
