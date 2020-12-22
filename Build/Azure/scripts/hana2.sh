@@ -35,7 +35,7 @@ cat <<-EOJSON > UserDataProviders.json
     "BASE.Azure": {
         "BasedOn": "AzureConnectionStrings",
         "DefaultConfiguration": "SQLite.MS",
-        "TraceLevel": "Info"
+        "TraceLevel": "Info",
         "Connections": {
             "SapHana.Odbc": {
                 "ConnectionString": "Driver=$HOME/linq2db_ci/providers/saphana/linux/ODBC/libodbcHDB.so;SERVERNODE=localhost:39015;databaseName=HXE;CS=TESTDB;UID=SYSTEM;PWD=Passw0rd;"
