@@ -191,7 +191,7 @@
 			"Informix"          : { "Provider": "Informix",                        "ConnectionString": "Server=localhost:9089;Database=testdb;userid=informix;password=in4mix"                                                                                    },
 			"Informix.DB2"      : {                                                "ConnectionString": "Server=localhost:9089;Database=testdb;userid=informix;password=in4mix"                                                                                    },
 			"DB2"               : { "Provider": "IBM.Data.DB2.Core",               "ConnectionString": "Server=localhost:50000;Database=testdb;UID=db2inst1;PWD=Password12!"                                                                                      },
-			"SapHana.Odbc"      : { "Provider": "SapHana.Odbc",                    "ConnectionString": "Driver=~/linq2db_ci/providers/saphana/linux/ODBC/libodbcHDB.so;SERVERNODE=localhost:39013;databaseName=HXE;CS=TESTDB;UID=SYSTEM;PWD=Passw0rd;"            },
+			"SapHana.Odbc"      : { "Provider": "SapHana.Odbc",                    "ConnectionString": "<SET BY SCRIPT>"                                                                                                                                          },
 		}
 	},
 

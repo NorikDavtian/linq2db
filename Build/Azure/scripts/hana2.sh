@@ -29,3 +29,33 @@ done
 docker logs hana2
 
 ~/linq2db_ci/providers/saphana/linux/HDBSQL/hdbsql -n localhost:39013 -u SYSTEM -p Passw0rd CREATE SCHEMA TESTDB
+
+cat <<-EOJSON > UserDataProviders.json
+{
+    "BASE.Azure": {
+        "Connections": {
+            "SapHana.Odbc": {
+                "ConnectionString": "Driver=$HOME/linq2db_ci/providers/saphana/linux/ODBC/libodbcHDB.so;SERVERNODE=localhost:39013;databaseName=HXE;CS=TESTDB;UID=SYSTEM;PWD=Passw0rd;"
+            }
+        }
+    },
+    "CORE21.Azure": {
+        "BasedOn": "BASE.Azure",
+        "Providers": [
+            "SapHana.Odbc"
+        ]
+    },
+    "CORE31.Azure": {
+        "BasedOn": "BASE.Azure",
+        "Providers": [
+            "SapHana.Odbc"
+        ]
+    },
+    "NET50.Azure": {
+        "BasedOn": "BASE.Azure",
+        "Providers": [
+            "SapHana.Odbc"
+        ]
+    }
+}
+EOJSON

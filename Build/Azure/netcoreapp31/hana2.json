@@ -1,5 +1,25 @@
 ﻿{
+	"BASE.Azure": {
+		"Connections": {
+			"SapHana.Odbc": {
+				"ConnectionString": "Driver=~/linq2db_ci/providers/saphana/linux/ODBC/libodbcHDB.so;SERVERNODE=localhost:39013;databaseName=HXE;CS=TESTDB;UID=SYSTEM;PWD=Passw0rd;"
+			}
+		}
+	},
+	"CORE21.Azure": {
+		"BasedOn": "BASE.Azure",
+		"Providers": [
+			"SapHana.Odbc"
+		]
+	},
 	"CORE31.Azure": {
+		"BasedOn": "BASE.Azure",
+		"Providers": [
+			"SapHana.Odbc"
+		]
+	},
+	"NET50.Azure": {
+		"BasedOn": "BASE.Azure",
 		"Providers": [
 			"SapHana.Odbc"
 		]
