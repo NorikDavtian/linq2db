@@ -35,3 +35,5 @@ while ! docker info 2>/dev/null ; do
 
     echo 'Waiting for docker service to be in the running state'
 done
+
+echo 'docker started after $retries wait cycles'
