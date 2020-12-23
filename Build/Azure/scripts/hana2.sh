@@ -33,10 +33,8 @@ docker logs hana2
 # clear memory limits
 ~/linq2db_ci/providers/saphana/linux/HDBSQL/hdbsql -d HXE -n localhost:39013 -u SYSTEM -p Passw0rd ALTER USER SYSTEM CLEAR PARAMETER STATEMENT MEMORY LIMIT
 # create linked server for FQN names testing
-sql = 'CREATE REMOTE SOURCE "LINKED_DB" ADAPTER "hanaodbc" CONFIGURATION \'DRIVER=libodbcHDB.so;ServerNode=127.0.0.1:39013;\''
-~/linq2db_ci/providers/saphana/macos/HDBSQL/hdbsql -d HXE -n localhost:39013 -u SYSTEM -p Passw0rd '$sql'
-sql = 'CREATE CREDENTIAL FOR USER SYSTEM COMPONENT \'SAPHANAFEDERATION\' PURPOSE \'LINKED_DB\' TYPE \'PASSWORD\' USING \'user=SYSTEM;password=Passw0rd\''
-~/linq2db_ci/providers/saphana/macos/HDBSQL/hdbsql -d HXE -n localhost:39013 -u SYSTEM -p Passw0rd '$sql'
+~/linq2db_ci/providers/saphana/linux/HDBSQL/hdbsql -d HXE -n localhost:39013 -u SYSTEM -p Passw0rd 'CREATE REMOTE SOURCE "LINKED_DB" ADAPTER "hanaodbc" CONFIGURATION '"'"'DRIVER=libodbcHDB.so;ServerNode=127.0.0.1:39013;'"'"''
+~/linq2db_ci/providers/saphana/linux/HDBSQL/hdbsql -d HXE -n localhost:39013 -u SYSTEM -p Passw0rd 'CREATE CREDENTIAL FOR USER SYSTEM COMPONENT '"'"'SAPHANAFEDERATION'"'"' PURPOSE '"'"'LINKED_DB'"'"' TYPE '"'"'PASSWORD'"'"' USING '"'"'user=SYSTEM;password=Passw0rd'"'"''
 
 
 cat <<-EOJSON > UserDataProviders.json
